@@ -1,0 +1,7 @@
+%TMPL:INCLUDE{"oops"}%<!-- template: oopstopicname.nat.tmpl -->
+%TMPL:DEF{"heading"}%%MAKETEXT{"Topic name not allowed"}%%TMPL:END%
+%TMPL:DEF{"message"}%<!-- message -->
+%MAKETEXT{"Can not [_1] topic named <b><nop>[_2]</b>: [_3]" args="%PARAM1%, %PARAM2%, %PARAM3%"}%
+
+%TMPL:P{"goback"}%
+<!-- //message -->%TMPL:END%

@@ -1,0 +1,74 @@
+%META:TOPICINFO{author="ProjectContributor" date="1224862720" format="1.1" version="$Rev$"}%
+---+!! %TOPIC%
+<!--
+One line description, required for extensions repository catalog.
+   * Set SHORTDESCRIPTION = Control naming of topics
+-->
+<table style="float:right">
+<tr>
+  <td><img src="%ATTACHURLPATH%/wikiringlogo40x40.png"></td>
+  <td><a href="http://wikiring.com" title="Make your Wiki ring!" style="text-decoration:none">
+      Powered by <br /> <nop>WikiRing Consultants </a>
+  </td>
+</tr>
+</table>
+%SHORTDESCRIPTION%
+
+This plugin allows you to enforce a certain policy for topic names by defining
+a set of rules. Each rule consists of 
+
+   1 a regular expression pattern
+   1 an error message, and
+   1 a flag
+
+When a topic is to be edited or saved, the regular expressions are checked. Each
+rule can be flagged =deny= or =allow. All rules are processed in the order given.
+The first pattern that matches either forbids or allows the topic to be processed
+any further. For instance, the example only allows topics names to consist of 
+characters a-z, A-Z, digits 0-9, the dot and a slash. Dot and slash are needed
+as the match is tested against the fully qualified topic name consisting of the
+web and topic part, separated by a dot. That way you can create different rules for
+different webs.
+
+Several topics can be specified using
+<noautolink>
+
+   * Set TOPICVALIDATION_PLUGIN_RULESET = TopicNameRuleSet1, TopicNameRuleSet1, ...
+
+</noautolink>
+(defaults to %SYSTEMWEB%.TopicNameValidationPlugin)
+
+Each ruleset topic is parsed for a table in the format given below and all rules
+are concatenated.
+
+If a topic name is forbidden, the user is redirected to =oopstopicname=. That's
+where the =error message= is inserted as specified in the second column of the
+rule set.
+
+A rule can be disabled temporarily by adding =disabled= to the third column.
+
+
+| *Pattern* | *Message* | *Flag* |
+| [^a-zA-Z0-9\.\/_] | Only characters a-z and digits 0-9 are allowed. | |
+
+---++ Installation Instructions
+
+%$INSTALL_INSTRUCTIONS%
+
+---++ Plugin Info
+
+Sponsored by <a href="http://www.schenck-rotec.net"><img src="%ATTACHURLPATH%/schenck_logo.gif" border="0" title="Schenck-RoTec"/></a>
+
+|  Plugin Author(s): | Foswiki:Main/MichaelDaum |
+|  Copyright &copy;: | 2008-2009, Michael Daum http://michaeldaumconsulting.com |
+|  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
+|  Plugin Version: | 1.0 |
+|  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  23 Apr 2009 | converted to foswiki plugin |
+|  24 Oct 2008 | initial version |
+|  Dependencies: | %$DEPENDENCIES% |
+|  Plugin Home: | Foswiki:Extensions/%TOPIC% |
+|  Support: | Foswiki:Support/%TOPIC% |
+
+%META:FILEATTACHMENT{name="wikiringlogo40x40.png" attachment="wikiringlogo40x40.png" attr="h" comment="" date="1189787359" path="wikiringlogo40x40.png" size="2571" stream="wikiringlogo40x40.png" tmpFilename="" user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="schenck_logo.gif" attachment="schenck_logo.gif" attr="h" comment="" date="1184958431" path="schenck_logo.gif" size="882" stream="schenck_logo.gif" tmpFilename="/var/tmp/CGItemp4701" user="ProjectContributor" version="1"}%
