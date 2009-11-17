@@ -62,7 +62,8 @@ Sponsored by <a href="http://www.schenck-rotec.net"><img src="%ATTACHURLPATH%/sc
 |  Plugin Author(s): | Foswiki:Main/MichaelDaum |
 |  Copyright &copy;: | 2008-2009, Michael Daum http://michaeldaumconsulting.com |
 |  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
-|  Plugin Version: | 1.0 |
+|  Release: | %$RELEASE% |
+|  Version: | %$VERSION% |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
 |  23 Apr 2009 | converted to foswiki plugin |
 |  24 Oct 2008 | initial version |
