@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" date="1224862720" format="1.1" version="$Rev$"}%
+%META:TOPICINFO{author="BaseUserMapping_999" comment="autosave" date="1356278781" format="1.1" version="1"}%
 ---+!! %TOPIC%
 %SHORTDESCRIPTION%
 
@@ -52,11 +52,11 @@ One line description, required for extensions repository catalog.
 Sponsored by <a href="http://www.schenck-rotec.net"><img src="%ATTACHURLPATH%/schenck_logo.gif" border="0" title="Schenck-RoTec"/></a>
 
 |  Plugin Author(s): | Foswiki:Main/MichaelDaum |
-|  Copyright &copy;: | 2008-2012, Michael Daum http://michaeldaumconsulting.com |
+|  Copyright &copy;: | 2008-2013, Michael Daum http://michaeldaumconsulting.com |
 |  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
-|  Release: | %$RELEASE% |
 |  Version: | %$VERSION% |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  06 May 2013 | cleaned up use of deprecated api |
 |  07 May 2012 | added german translation |
 |  23 Apr 2009 | converted to foswiki plugin |
 |  24 Oct 2008 | initial version |

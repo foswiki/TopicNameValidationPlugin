@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# Copyright (C) 2008-2012 MichaelDaum http://michaeldaumconsulting.com
+# Copyright (C) 2008-2013 MichaelDaum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -13,23 +13,24 @@
 # GNU General Public License for more details, published at
 # http://www.gnu.org/copyleft/gpl.html
 
-
 package Foswiki::Plugins::TopicNameValidationPlugin;
 
 use strict;
-require Foswiki::Func;    # The plugins API
-require Foswiki::Plugins; # For the API version
-require Foswiki::OopsException; # For the API version
+use warnings;
 
-use vars qw(
-  $VERSION $RELEASE $SHORTDESCRIPTION $NO_PREFS_IN_TOPIC
-  $baseWeb $baseTopic @ruleSet $doneInit 
-);
+use Foswiki::Func();
+use Foswiki::Plugins();
+use Foswiki::OopsException();
 
-$VERSION = '$Rev$';
-$RELEASE = '1.1';
-$SHORTDESCRIPTION = 'Control naming of topics';
-$NO_PREFS_IN_TOPIC = 1;
+our $VERSION = '1.20';
+our $RELEASE = '1.20';
+our $SHORTDESCRIPTION = 'Control naming of topics';
+our $NO_PREFS_IN_TOPIC = 1;
+
+our $baseWeb;
+our $baseTopic;
+our @ruleSet;
+our $doneInit = 0;
 
 use constant DEBUG => 0; # toggle me
 
@@ -46,6 +47,7 @@ sub initPlugin {
   ($baseTopic, $baseWeb) = @_;
 
   $doneInit = 0;
+  @ruleSet = ();
 
   return 1;
 }
@@ -56,9 +58,7 @@ sub doInit {
   return if $doneInit;
   $doneInit = 1;
   
-  #writeDebug("called doInit()");
-
-  @ruleSet = ();
+  writeDebug("called doInit()");
 
   my $systemWeb = $Foswiki::cfg{SystemWebName};
   my $ruleSetTopics = Foswiki::Func::getPreferencesFlag("TOPICVALIDATION_PLUGIN_RULESET") 
@@ -69,18 +69,18 @@ sub doInit {
 
     # get topic name
     my ($ruleSetWeb, $ruleSetTopic) = Foswiki::Func::normalizeWebTopicName($baseWeb, $webTopic);
-    if (!Foswiki::Func::topicExists($ruleSetWeb, $ruleSetTopic)) {
+    unless (Foswiki::Func::topicExists($ruleSetWeb, $ruleSetTopic)) {
       my $msg = "ruleset topic '$webTopic' not found";
-      #writeDebug($msg);
+      writeDebug($msg);
       Foswiki::Func::writeWarning($msg);
       next;
     }
 
     # read rules
-    my $rulesText = Foswiki::Func::readTopicText($ruleSetWeb, $ruleSetTopic);
-    foreach my $line (split /\n/, $rulesText) {
+    my ($meta, $text) = Foswiki::Func::readTopic($ruleSetWeb, $ruleSetTopic);
+    foreach my $line (split /\n/, $text) {
       if ($line =~ /^\s*\|\s*(.*?)\s*\|\s*(.*?)\s*\|\s*(.*?)\s*\|\s*$/) {
-        #writeDebug("line=$line");
+        writeDebug("line=$line");
         next if $1 =~ /^\*.*\*$/o;
         next if $3 =~ /disabled/;
         my $isAllowed = ($3 =~ /allowed/)?1:0;
@@ -90,7 +90,7 @@ sub doInit {
           error => $2,
           isAllowed => $isAllowed,
         };
-        #writeDebug("found pattern='$1', error='$2', isAllowed=$isAllowed");
+        writeDebug("found pattern='$1', error='$2', isAllowed=$isAllowed");
       }
     }
   }
@@ -109,7 +109,7 @@ sub checkRules {
 
     if ($webTopicName =~ /$pattern/) {
       #writeDebug("$webTopicName matches '$pattern'");
-      if (!$rule->{isAllowed}) {
+      unless ($rule->{isAllowed}) {
         throw Foswiki::OopsException( 
           'topicname',
           def => $action,
@@ -131,7 +131,5 @@ sub beforeSaveHandler {
 sub beforeEditHandler { 
   checkRules('edit', @_); 
 }
-
-
 
 1;
