@@ -1,0 +1,9 @@
+*.swp
+igp_*
+TopicNameValidationPlugin.md5
+TopicNameValidationPlugin.sha1
+TopicNameValidationPlugin.tgz
+TopicNameValidationPlugin.txt
+TopicNameValidationPlugin.zip
+TopicNameValidationPlugin_installer
+TopicNameValidationPlugin_installer.pl

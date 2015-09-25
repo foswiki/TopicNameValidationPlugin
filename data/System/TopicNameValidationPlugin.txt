@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BaseUserMapping_999" comment="autosave" date="1356278781" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="autosave" date="1356278781" format="1.1" version="1"}%
 ---+!! %TOPIC%
 %SHORTDESCRIPTION%
 
@@ -43,25 +43,25 @@ A rule can be disabled temporarily by adding =disabled= to the third column.
 
 %$INSTALL_INSTRUCTIONS%
 
----++ Plugin Info
-<!--
-One line description, required for extensions repository catalog.
-   * Set SHORTDESCRIPTION = Control naming of topics
--->
+---++ Change History
 
-Sponsored by <a href="http://www.schenck-rotec.net"><img src="%ATTACHURLPATH%/schenck_logo.gif" border="0" title="Schenck-RoTec"/></a>
-
-|  Plugin Author(s): | Foswiki:Main/MichaelDaum |
-|  Copyright &copy;: | 2008-2013, Michael Daum http://michaeldaumconsulting.com |
-|  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
-|  Version: | %$VERSION% |
-|  Change History: | <!-- versions below in reverse order -->&nbsp; |
+%TABLE{columnwidths="7em" tablewidth="100%"}%
 |  06 May 2013 | cleaned up use of deprecated api |
 |  07 May 2012 | added german translation |
 |  23 Apr 2009 | converted to foswiki plugin |
 |  24 Oct 2008 | initial version |
-|  Dependencies: | %$DEPENDENCIES% |
-|  Plugin Home: | Foswiki:Extensions/%TOPIC% |
-|  Support: | Foswiki:Support/%TOPIC% |
+
+<!--
+   * Set SHORTDESCRIPTION = Control naming of topics
+-->
 
 %META:FILEATTACHMENT{name="schenck_logo.gif" attachment="schenck_logo.gif" attr="h" comment="" date="1184958431" path="schenck_logo.gif" size="882" stream="schenck_logo.gif" tmpFilename="/var/tmp/CGItemp4701" user="ProjectContributor" version="1"}%
+%META:FORM{name="PackageForm"}%
+%META:FIELD{name="Author" title="Author" value="Foswiki:Main/MichaelDaum"}%
+%META:FIELD{name="Copyright" title="Copyright" value="2008-2015, Michael Daum http://michaeldaumconsulting.com"}%
+%META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/%TOPIC%"}%
+%META:FIELD{name="License" title="License" value="[[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]]"}%
+%META:FIELD{name="Release" title="Release" value="%$RELEASE%"}%
+%META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/TopicNameValidationPlugin"}%
+%META:FIELD{name="Support" title="Support" value="Foswiki:Support/%TOPIC%"}%
+%META:FIELD{name="Version" title="Version" value="%$VERSION%"}%
